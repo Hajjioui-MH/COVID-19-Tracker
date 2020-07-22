@@ -1,12 +1,12 @@
 import React,{ useState, useEffect } from 'react';
 import Card from './Card';
-import {fetchCardData} from '../../api'
+import {fetchCard_GlobalData} from '../../api'
 
 const Cards = ()=>{
 	const [data,setData] = useState({});
 	useEffect( ()=>{
 		const fetch_api = async ()=>{
-			const initial_Card_Data = await fetchCardData();
+			const initial_Card_Data = await fetchCard_GlobalData();
 			setData(initial_Card_Data);
 		}
 		fetch_api()

@@ -1,13 +1,23 @@
-import React from 'react';
-import {Cards} from '../components'
+import React,{ Component } from 'react';
+import {Cards, CountryPicker} from '../components'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Cards />
-    </div>
-  );
+class App extends Component {
+  state = {
+    country : '',
+  }
+  handleCountryChange = (value)=>{
+    console.log(value);
+  }
+  render(){
+      return (
+        <div className="App">
+          <Cards />
+          <CountryPicker countryChange={this.handleCountryChange} />
+        </div>
+      );
+  }
+
 }
 
 export default App;
