@@ -1,16 +1,17 @@
 import React,{ useState, useEffect } from 'react';
 import Card from './Card';
-import {fetchCard_GlobalData} from '../../api'
+import {fetchCardData} from '../../api' //return an object
 
-const Cards = ()=>{
+const Cards = ({ country })=>{
+
 	const [data,setData] = useState({});
 	useEffect( ()=>{
 		const fetch_api = async ()=>{
-			const initial_Card_Data = await fetchCard_GlobalData();
+			const initial_Card_Data = await fetchCardData(country);
 			setData(initial_Card_Data);
 		}
 		fetch_api()
-	},[])
+	},[country])
 
 	if (data.confirmed) {
 		return(

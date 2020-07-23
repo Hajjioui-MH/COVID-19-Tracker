@@ -1,21 +1,23 @@
 import React,{ Component } from 'react';
-import {Cards, CountryPicker} from '../components'
+import {Cards, CountryPicker, Chart} from '../components'
 import './App.css';
 
 class App extends Component {
   state = {
     country : '',
   }
-  handleCountryChange = (value)=>{
-    console.log(value);
+  handleCountryChange = (clickedCountry)=>{
+    this.setState({ country : clickedCountry })
   }
   render(){
-      return (
-        <div className="App">
-          <Cards />
-          <CountryPicker countryChange={this.handleCountryChange} />
-        </div>
-      );
+    const { country } = this.state;
+    return (
+      <div className="App">
+        <Cards country={country} />
+        <CountryPicker countryChange={this.handleCountryChange} />
+        <Chart country={country} />
+      </div>
+    );
   }
 
 }
